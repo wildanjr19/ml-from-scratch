@@ -30,3 +30,6 @@ Dimana:
 - **pᵢ** = koordinat titik p pada dimensi ke-i
 - **qᵢ** = koordinat titik q pada dimensi ke-i
 - **n** = jumlah dimensi/fitur
+
+## Referensi
+- [Math Explanation of KNN](https://www.geeksforgeeks.org/machine-learning/mathematical-explanation-of-k-nearest-neighbour/)

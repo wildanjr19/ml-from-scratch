@@ -32,4 +32,5 @@ class KNN:
         k_neares_labels = [self.y_train[i] for i in k_idx]
         # majority vote (common)
         most_common = Counter(k_neares_labels).most_common(1)
+        # kembalikan label di tuple pertama
         return most_common[0][0]
