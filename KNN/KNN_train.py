@@ -20,6 +20,6 @@ clf.fit(X_train, y_train)
 # predictions
 predictions = clf.predict(X_test)
 
-# akurasi
+# evaluasi (akurasi)
 acc = np.sum(predictions == y_test) / len(y_test)
 print(f"Akurasi: {acc}")
