@@ -13,12 +13,7 @@ $$Posteriors = P(x_i|y) = \frac{1}{\sqrt{2 \pi \sigma_y^2}} \cdot \exp \left( -\
 
 ## Predict Technique
 
-$$y = argmax_y log(P(x_1|y)) + loglog(P(x_2|y)) + ... + log(P(x_n|y)) + log(P(y)) $$
-
-## Gradient Descent
-
-## Cost Function
-
+$$y = argmax_y log(P(x_1|y)) + log(P(x_2|y)) + ... + log(P(x_n|y)) + log(P(y)) $$
 
 ## Priors / Initial Probability
 $$ Priors =  P(A) = P(y = k) = \frac{\text{jumlah data dengan kelas } k}{\text{total data}} $$
