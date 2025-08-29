@@ -16,5 +16,5 @@ $$Posteriors = P(x_i|y) = \frac{1}{\sqrt{2 \pi \sigma_y^2}} \cdot \exp \left( -\
 $$y = argmax_y log(P(x_1|y)) + log(P(x_2|y)) + ... + log(P(x_n|y)) + log(P(y)) $$
 
 ## Priors / Initial Probability
-$$ Priors =  P(A) = P(y = k) = \frac{\text{jumlah data dengan kelas } k}{\text{total data}} $$
+$$Priors =  P(A) = P(y = k) = \frac{\text{jumlah data dengan kelas } k}{\text{total data}}$$
 Untuk menghindari perkalian yang menghasilkan bilangan kecil dan underflow numerik, maka kita melalukan operasi log untuk priors $log(P(y))$
