@@ -7,6 +7,7 @@ $$w \cdot x_i - b \geq 1 \quad \text {if }  y_i = 1$$
 
 $$w \cdot x_i - b \leq -1 \quad \text {if }  y_i = -1$$
 
+Dapat disederhanakan menjadi berikut:
 $$y_i(w \cdot x_i - b) \geq 1$$
 
 ## Cost Function
@@ -21,7 +22,7 @@ $$
 \end{cases}
 $$  
 
-### Add Regularization
+## Add Regularization
 $$
 J = \lambda||w||^2 + \frac{1}{n} \sum_{i=1}^{n} \max(0, 1 -  y_i(w \cdot x_i - b))
 $$  
