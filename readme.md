@@ -11,3 +11,11 @@
 ## Logistic Regression
 - Sigmoid
 - Cross Entropy
+
+## Naive Bayes
+- Prior and posterior
+- Conditional Probability
+
+## SVM
+- Hinge Loss
+- Classification task
