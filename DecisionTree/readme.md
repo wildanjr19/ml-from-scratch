@@ -7,6 +7,7 @@ $p(X) = \frac{x}{n}$
 
 ## Information Gain (Gini)
 $$IG = E(parent) - [weightedaverage] \cdot E(children)$$
+Digunakan untuk mencari threholds splitting
 
 ## Intuisi
 
@@ -23,3 +24,7 @@ $$IG = E(parent) - [weightedaverage] \cdot E(children)$$
 - Melintasi model secara rekursif
 - Di setiap node, lihat split terbaik dari test feature vector dan menentukan untuk ke node kanan atau node kiri. berdasar pada, `x[feature_idx] <= threshold`
 - Ketika sudah sampai di node terakhit (leaf node), kita kembalikan dan simpan label yang paling sering muncul
+
+## Notes
+- root : daun teratas
+- leaf : daun tidak bisa di split lagi
