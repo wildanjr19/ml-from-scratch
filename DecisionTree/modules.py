@@ -72,8 +72,31 @@ class DecisionTree:
             X_column = X[:, feat_idx]
             # dapatkan threshold dengan mencari nilai uniq di tiap kolom/variabel
             thresholds = np.unique(X_column)
+            # looping
+            for threshold in thresholds:
+                gain = self._information_gain(y, X_column, threshold)
 
+                # get
+                if gain > best_gain:
+                    best_gain = gain
+                    split_idx = feat_idx
+                    split_thresh = threshold
 
+        return split_idx, split_thresh
+
+    # helper -> hitung information gain
+    def _information_gain(self, y, X_column, split_thresh):
+        # E(parent)
+        parent_entropy = entropy(y)
+        # buat split -> kiri dan kanan
+        left_idxs, right_idxs = self._split(X_column, split_thresh)
+
+        
+    # helper -> split
+    def _split(self, X_column, split_thresh):
+        left_idxs = np.argwhere(X_column <= split_thresh).flatten()
+        right_idxs = np.argwhere(X_column > split_thresh).flatten()
+        return left_idxs, right_idxs
 
     # helper -> mencari label yang paling sering muncul
     def _most_common_label(self, y):
