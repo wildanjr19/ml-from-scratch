@@ -94,6 +94,7 @@ class DecisionTree:
 
     # helper -> hitung information gain
     def _information_gain(self, y, X_column, split_thresh):
+        """Hitung information gain"""
         # E(parent)
         parent_entropy = entropy(y)
         # buat split -> kiri dan kanan
@@ -115,12 +116,14 @@ class DecisionTree:
 
     # helper -> split
     def _split(self, X_column, split_thresh):
+        """Split data berdasarkan threshold"""
         left_idxs = np.argwhere(X_column <= split_thresh).flatten()
         right_idxs = np.argwhere(X_column > split_thresh).flatten()
         return left_idxs, right_idxs
 
     # helper -> mencari label yang paling sering muncul
     def _most_common_label(self, y):
+        """Mencari label yang paling sering muncul"""
         counter = Counter(y)
         most_common = counter.most_common(1)[0][0]
         return most_common
