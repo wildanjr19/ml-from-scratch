@@ -1,3 +1,4 @@
+from platform import node
 import numpy as np
 from collections import Counter
 
@@ -59,6 +60,12 @@ class DecisionTree:
         # greedy search
         best_feat, best_thresh = self._best_criteria(X, y, feat_idxs)
 
+        left_idxs, right_idxs = self._split(X[:, best_feat],  best_thresh)
+        # rekursif
+        left = self._grow_tree(X[left_idxs, :], y[left_idxs], depth + 1)
+        right = self._grow_tree(X[right_idxs, :], y[right_idxs], depth + 1)
+
+        return Node(feature=best_feat, threshold=best_thresh, left=left, right=right)
 
     # helper -> mencari kriteria terbaik
     def _best_criteria(self, X, y, feat_idxs):
@@ -91,7 +98,20 @@ class DecisionTree:
         # buat split -> kiri dan kanan
         left_idxs, right_idxs = self._split(X_column, split_thresh)
 
-        
+        # mencegah node kosong
+        if len(left_idxs) == 0 or len(right_idxs) == 0:
+            return 0
+
+        # [weighted average] * E(children)
+        n = len(y)
+        n_left, n_right = len(left_idxs), len(right_idxs)
+        entropy_left, entropy_right = entropy(y[left_idxs]), entropy(y[right_idxs])
+        children_entropy = (n_left /n) * entropy_left + (n_right / n) * entropy_right
+
+        # totalkan
+        ig = parent_entropy - children_entropy
+        return ig
+
     # helper -> split
     def _split(self, X_column, split_thresh):
         left_idxs = np.argwhere(X_column <= split_thresh).flatten()
@@ -106,4 +126,14 @@ class DecisionTree:
 
     def predict(self, X):
         # melewatkan data di pohon
-        pass
+        return np.array([self._traverse_tree(x, self.root) for x in X])
+
+    # helper -> traverse tree / melewatkan data di pohon
+    def _traverse_tree(self, x, node):
+        if node.is_leaf_node():
+            return node.value
+
+        if x[node.feature] <= node.threshold:
+            return self._traverse_tree(x, node.left)
+        else:
+            return self._traverse_tree(x, node.right)
