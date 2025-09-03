@@ -44,6 +44,7 @@ class DecisionTree:
 
     # helper -> growing tree / penambahan node
     def _grow_tree(self, X, y, depth = 0):
+        """Fungsi utama untuk training, membuat node dan pertumbuhan pohon"""
         # insialisasi parameter
         n_samples, n_features = X.shape
         n_labels = len(np.unique(y))
@@ -57,9 +58,9 @@ class DecisionTree:
         # ambil fitur indeks dari n_features sebanyak n_feats dan tanpa pengembalian (replace=false)
         feat_idxs = np.random.choice(n_features, self.n_feats, replace=False)
 
-        # greedy search
+        # greedy search (looping) -> mencari fitur dan threshold terbaik
         best_feat, best_thresh = self._best_criteria(X, y, feat_idxs)
-
+        # split node kanan dan kiri
         left_idxs, right_idxs = self._split(X[:, best_feat],  best_thresh)
         # rekursif
         left = self._grow_tree(X[left_idxs, :], y[left_idxs], depth + 1)
@@ -69,7 +70,7 @@ class DecisionTree:
 
     # helper -> mencari kriteria terbaik
     def _best_criteria(self, X, y, feat_idxs):
-        # mulai dari nilai -1
+        # buat nilai patokan nilai gain -1
         best_gain = -1
         split_idx, split_thresh = None, None
 
