@@ -1,7 +1,7 @@
 import numpy as np
 from collections import Counter
 # import decision tree sebelumnya
-from DecisionTree.decision_tree import DecisionTree
+from utils_dt import DecisionTree
 
 
 # fungsi bootstrapping untuk menghasilkan subset data
