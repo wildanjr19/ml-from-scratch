@@ -19,3 +19,12 @@
 ## SVM
 - Hinge Loss
 - Classification task
+
+## Decision Tree
+- Information Gain
+
+## Random Forest
+- Decision Tree looping
+
+## PCA
+- 
