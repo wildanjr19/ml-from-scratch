@@ -6,7 +6,7 @@ $$E = - \sum p(X) \cdot log_2 (P(X))$$
 $p(X) = \frac{x}{n}$
 
 ## Information Gain (Gini)
-$$IG = E(parent) - [weightedaverage] \cdot E(children)$$
+$$IG = E(parent) - [weightedaverage] \cdot E(children)$$  
 Digunakan untuk mencari threholds splitting
 
 ## Intuisi
