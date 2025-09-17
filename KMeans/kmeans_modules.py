@@ -25,7 +25,7 @@ class KMeans:
         """inisialisasi centroid awal secara random"""
         # pilih K random sample sebagai centorid awal -> mengembalikan index data tanpa pengembalian
         random_sample_idxs = np.random.choice(self.n_samples, self.K, replace=False)
-        # simpan centroid awal tsbt
+        # simpan centroid awal 
         self.centroids = [self.X[idx] for idx in random_sample_idxs]
 
         """optimisasi -> iterasi selama max_itres"""
@@ -40,6 +40,15 @@ class KMeans:
         # kembalikan label cluster
 
 
-    # helper -> update clusters
-        
-        
+    # helper -> create clusters
+    """mengkluster setiap data ke centroid terdekat"""
+    def _create_clusters(self, centroids):
+        # buat list kosong sebanyak K, yang akan diisi indeks
+        clusters = [[] for _ in range(self.K)]
+        # looping setiap data pada dataset (X)
+        for idx, sample in enumerate(self.X):
+            # setiap data akan dimasukkan ke indeks centroid terdekat
+            centroid_idx = self._closest_centroid(sample, centroids)
+            # idx (indeks data) dimasukkan ke dalam ke list clusters pada indeks centroid terdekatnya
+            clusters[centroid_idx].append(idx)
+        return clusters
